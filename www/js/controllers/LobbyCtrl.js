@@ -1,13 +1,13 @@
-angular.module('starter.controllers')
-    .controller('LobbyCtrl', ['$scope', 'TKTestQuestionService', 'TKTestAnswerService', '$state',
-        function($scope, TKTestQuestionService, TKTestQuestionService, TKTestAnswerService, $state) {
+/*global angular*/
+angular.module('starter.controllers', [])
+    .controller('LobbyCtrl', ['$scope', 'TKTestQuestionService', '$state', 'TKAnswersService',
+        function($scope, TKTestQuestionService, $state, TKAnswersService) {
             TKTestQuestionService.all();
-
-            $scope.goToTest = function() 
-            {
+            $scope.goToTest = function() {
                 TKAnswersService.resetAnswers();
-                $state.go('question',{ questionID: 1 });
+                $state.go('question', {
+                    questionID: 1
+                });
             };
-
-        
-    }]);
+        }
+    ]);

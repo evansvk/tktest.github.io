@@ -10,6 +10,14 @@ angular.module('TKTestAnswers', [])
         };
         var categoriesStack = [];
 
+        service.getTests = function() {
+            return JSON.parse($window.localStorage.tests);
+        };
+
+        service.setAnswers = function(answers) {
+            answerCategories = answers;
+        };
+
         service.getAnswers = function() {
             return answerCategories;
         };
@@ -36,4 +44,6 @@ angular.module('TKTestAnswers', [])
             tempTests.push(test);
             $window.localStorage.tests = JSON.stringify(tempTests);
         };
+
+
     }]);
