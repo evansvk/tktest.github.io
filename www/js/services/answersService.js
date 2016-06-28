@@ -11,7 +11,7 @@ angular.module('TKTestAnswers', [])
         var categoriesStack = [];
 
         service.getTests = function() {
-            return JSON.parse($window.localStorage.tests);
+            return JSON.parse($window.localStorage.tests || []);
         };
 
         service.setAnswers = function(answers) {
