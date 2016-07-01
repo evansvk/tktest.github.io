@@ -31,6 +31,7 @@ angular.module('starter.controllers')
             };
 
             function performRequest() {
+
                 var answersDict = angular.copy(TKAnswersService.getAnswers());
                 var date = new Date();
                 answersDict["createDate"] = date.toUTCString();
@@ -39,7 +40,9 @@ angular.module('starter.controllers')
                 $ionicHistory.nextViewOptions({
                     historyRoot: true
                 });
+
                 $state.go('results');
             }
+
         }
     ]);

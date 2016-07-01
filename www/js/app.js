@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 /*global angular*/
-angular.module('starter', ['ionic', 'TKTestQuestions', 'starter.controllers', 'TKTestAnswers', 'chart.js', 'TKResultsButton'])
+angular.module('starter', ['ionic', 'TKTestQuestions', 'starter.controllers', 'TKTestAnswers', 'chart.js', 'TKResultsButton', 'RESTServices'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -25,37 +25,63 @@ angular.module('starter', ['ionic', 'TKTestQuestions', 'starter.controllers', 'T
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
-$urlRouterProvider.otherwise('/');
-$stateProvider
-  .state('lobby', {
-    url: '/',
-    controller: 'LobbyCtrl',
-    templateUrl: 'templates/lobby.html',
-  })
-  .state('question', {
-    url: '/question:questionID',
-    templateUrl: 'templates/question.html',
-    controller: 'QuestionsCtrl',
-    resolve: {
-      testInfo: function($stateParams, TKTestQuestionService) {
-        return TKTestQuestionService.getQuestion($stateParams.questionID);
+  $urlRouterProvider.otherwise('/');
+  $stateProvider
+
+    .state('landing', {
+      url: '/',
+      templateUrl: 'templates/landing.html'
+    })
+    .state('register', {
+      url: '/register',
+      controller: 'registerCtrl',
+      templateUrl: 'templates/register.html'
+    })
+    .state('login', {
+      url: '/login',
+      controller: 'loginCtrl',
+      templateUrl: 'templates/login.html'
+    })
+    .state('lobby', {
+      url: '/lobby',
+      controller: 'LobbyCtrl',
+      templateUrl: 'templates/lobby.html'
+    })
+    .state('question', {
+      url: '/question:questionID',
+      templateUrl: 'templates/question.html',
+      controller: 'QuestionsCtrl',
+      resolve: {
+        testInfo: function($stateParams, TKTestQuestionService) {
+          return TKTestQuestionService.getQuestion($stateParams.questionID);
+        }
       }
-    }
-  })
-  .state('results', {
-    url: '/results',
-    templateUrl: 'templates/results.html',
-    controller: 'ResultsCtrl',
-    cache: false
-  })
+    })
+    .state('results', {
+      url: '/results',
+      templateUrl: 'templates/results.html',
+      controller: 'ResultsCtrl',
+      cache: false
+    })
+
   .state('history', {
     url: '/history',
     templateUrl: 'templates/history.html',
     controller: 'HistoryCtrl',
     resolve: {
-      tests: ['TKAnswersService', function(TKAnswersService) {
-        return TKAnswersService.getTests();
+      tests: ['TKAnswersService', '$window', function(TKAnswersService, $window) {
+        return TKAnswersService.getTests($window.localStorage.token,$window.localStorage.userID)
+          .then(function(response) {
+            console.log(response);
+            return response.data;
+
+          }, function(error) {
+            console.log(error);
+
+            return error;
+          });
       }]
+
     }
   });
 });

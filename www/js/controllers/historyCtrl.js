@@ -19,7 +19,7 @@
         }
     ]); */
     
-    angular.module('starter.controllers')
+angular.module('starter.controllers')
 .controller('HistoryCtrl', ['$scope', '$window', '$state', 'tests', 'TKAnswersService', 'TKResultsButtonService',
 function($scope, $window, $state, tests, TKAnswersService, TKResultsButtonService) {
 

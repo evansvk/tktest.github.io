@@ -1,7 +1,7 @@
 /* global angular */
 angular.module('starter.controllers')
     .controller('ResultsCtrl', ['$scope', 'TKAnswersService', '$ionicHistory', '$state',
-        'TKResultsButtonService',
+        'TKResultsButtonService', 
         function($scope, TKAnswersService, $ionicHistory, $state, TKResultsButtonService) {
             
             $scope.shouldShowButton = TKResultsButtonService.getShouldShowMenuButton();
@@ -20,11 +20,11 @@ angular.module('starter.controllers')
             }
             $scope.data = [
                 [
-                    returnPercentage(answersInfo["competing"]),
-                    returnPercentage(answersInfo["collaborating"]),
-                    returnPercentage(answersInfo["compromising"]),
-                    returnPercentage(answersInfo["avoiding"]),
-                    returnPercentage(answersInfo["accommodating"])
+                    returnPercentage(answersInfo["Competing"]),
+                    returnPercentage(answersInfo["Collaborating"]),
+                    returnPercentage(answersInfo["Avoiding"]),
+                    returnPercentage(answersInfo["Avoiding"]),
+                    returnPercentage(answersInfo["Accommodating"])
                 ]
             ];
             $scope.options = {
