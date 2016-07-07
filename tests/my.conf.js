@@ -19,6 +19,9 @@ module.exports = function(config) {
       '../www/lib/angular-mocks/angular-mocks.js',
       '**/*tests.js'
     ],
+    
+      // Use the PhantomJS browser instead of Chrome
+   browsers: ['PhantomJS'],
 
 
     // list of files to exclude
@@ -56,8 +59,9 @@ module.exports = function(config) {
 
 
     // start these browsers
-   // Use the PhantomJS browser instead of Chrome
-    browsers: ['PhantomJS'],
+    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+    browsers: ['Chrome'],
+  
 
 
     // Continuous Integration mode
