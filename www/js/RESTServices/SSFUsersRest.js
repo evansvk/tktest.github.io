@@ -10,7 +10,7 @@ angular.module("RESTServices", [])
                 data: newUserData
             });
         };
-        SSFUsersRest.get = function(data) {
+        SSFUsersRest.get= function(data) {
             return $http({
                 url: "https://tktest-sirratav.c9users.io/api/SSFUsers/login",
                 method: 'POST',

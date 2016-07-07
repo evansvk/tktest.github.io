@@ -9,10 +9,9 @@ angular.module('TKTestAnswers', [])
             "accommodating": 0
         };
         var categoriesStack = [];
-
-        service.getTests = function(token, userID) {
+        service.getTests = function(token, userId) {
             //return JSON.parse($window.localStorage.tests || []);
-            return TestResultsRest.get(token, userID);
+            return TestResultsRest.get(token, userId);
                 
         };
 
@@ -44,7 +43,7 @@ angular.module('TKTestAnswers', [])
         service.saveTest = function(test) {
            // var tempTests = $window.localStorage.tests === undefined ? [] : JSON.parse($window.localStorage.tests);
            // tempTests.push(test);
-            test.userID = $window.localStorage.userID;
+            test.userID = $window.localStorage.userId;
             TestResultsRest.save(test);
         };
 

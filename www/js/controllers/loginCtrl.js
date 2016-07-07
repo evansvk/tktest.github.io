@@ -11,8 +11,9 @@ angular.module('starter.controllers')
                 SSFUsersRest.get($scope.user).then(function(response) {
             
                     if (response.status == 200) {
-                        $window.localStorage.token=response.data.token;
-                        $window.localStorage.userID=response.data.userID;
+                        $window.localStorage.token=response.data.id;
+                        $window.localStorage.userID=response.data.userId;
+                        $scope.user={};
                         
                         $state.go('lobby');
                         console.log(response);

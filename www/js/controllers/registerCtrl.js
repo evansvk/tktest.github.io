@@ -12,10 +12,11 @@ angular.module('starter.controllers')
 
             SSFUsersRest.post($scope.user) .then(function(response) {
                     if (response.status == 200) {
-                        $window.localStorage.userId=response.data.id;
+                       
                         $window.localStorage.token=response.data.token;
-                        
-                        
+                        $window.localStorage.userID=response.data.id;
+                        $scope.user={};
+                         
                         alert("Successful");
                         $state.go('lobby');
                     }

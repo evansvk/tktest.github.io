@@ -1,6 +1,6 @@
 /*global angular*/
 angular.module('RESTServices')
-    .service('TestResultsRest', ['$http', function($http) {
+    .service('TestResultsRest', ['$http','$window', function($http, $window) {
 
         var TestResultsRest = this;
         var apiURL = 'https://tktest-sirratav.c9users.io/api/TestResults/';
@@ -8,15 +8,19 @@ angular.module('RESTServices')
             return $http({
                 url: apiURL,
                 method: 'POST',
-                data: test
+                data: test,
+                headers: {
+                    'Authorization': $window.localStorage.token
+                }
 
             });
         };
-     TestResultsRest.get = function(token, userID) {
+     TestResultsRest.get = function(token, userId) {
             return $http({
-                url: apiURL,
+                url: 'https://tktest-sirratav.c9users.io/api/TestResults?filter[where][userID]=' + userId,
                 method: 'GET',
-                headers: {'Authorization' : token
+                headers: {
+                    'Authorization': token
             }
             });
         };

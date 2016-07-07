@@ -69,7 +69,7 @@ angular.module('starter', ['ionic', 'TKTestQuestions', 'starter.controllers', 'T
     templateUrl: 'templates/history.html',
     controller: 'HistoryCtrl',
     resolve: {
-      tests: ['TKAnswersService', '$window', function(TKAnswersService, $window) {
+      tests: ['TKAnswersService', '$window', function(TKAnswersService,$window) {
         return TKAnswersService.getTests($window.localStorage.token,$window.localStorage.userID)
           .then(function(response) {
             console.log(response);

@@ -22,7 +22,7 @@ angular.module('starter.controllers')
                 [
                     returnPercentage(answersInfo["Competing"]),
                     returnPercentage(answersInfo["Collaborating"]),
-                    returnPercentage(answersInfo["Avoiding"]),
+                    returnPercentage(answersInfo["Compromising"]),
                     returnPercentage(answersInfo["Avoiding"]),
                     returnPercentage(answersInfo["Accommodating"])
                 ]

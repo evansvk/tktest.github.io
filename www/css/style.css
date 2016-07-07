@@ -2,3 +2,8 @@
 form label.has-errors {
   border: 1px solid red;
 }
+
+.color {
+    
+    background: #008080;
+}
