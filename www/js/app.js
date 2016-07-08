@@ -30,6 +30,7 @@ angular.module('starter', ['ionic', 'TKTestQuestions', 'starter.controllers', 'T
 
     .state('landing', {
       url: '/',
+      controller: 'landingCtrl',
       templateUrl: 'templates/landing.html'
     })
     .state('register', {
