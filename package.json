@@ -22,8 +22,8 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
-    "cordova-plugin-dialogs",
-    "phonegap-plugin-push"
+    "ionic-plugin-deploy"
+   
   ],
   "cordovaPlatforms": [
     "ios",
